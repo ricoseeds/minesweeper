@@ -9,7 +9,7 @@ module Minesweeper
       dummy = Array.new(9){ Array.new(9,0) }
       dummy_level_name = "BEGINNER"
       mine_count = Minesweeper::Level.mine_count(dummy_level_name)
-      b = Minesweeper::Bomb.place_mines(dummy, mine_count)
+      Minesweeper::Bomb.place_mines(dummy, mine_count)
     end
   end
 end
