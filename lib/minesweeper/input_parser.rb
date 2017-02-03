@@ -9,7 +9,6 @@ module Minesweeper
       input_hash["board_config"].each do |k, v|
         @board << v
       end
-      binding.pry
     end
 
     def self.dummy_input
@@ -26,4 +25,4 @@ module Minesweeper
     end
   end
 end
-obj = Minesweeper::InputParser.new(Minesweeper::InputParser.dummy_input)
+# obj = Minesweeper::InputParser.new(Minesweeper::InputParser.dummy_input)
