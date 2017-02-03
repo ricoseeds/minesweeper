@@ -1,9 +1,11 @@
 require 'pry'
 module Minesweeper
   class InputParser
-    attr_reader :board
+    attr_reader :board, :rows, :columns
     def initialize(input_hash)
       @board = []
+      @columns = input_hash["board_config"].keys.last.to_i + 1
+      @rows = input_hash["board_config"]["0"].length
       input_hash["board_config"].each do |k, v|
         @board << v
       end
