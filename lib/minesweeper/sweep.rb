@@ -10,7 +10,6 @@ module Minesweeper
       dummy_level_name = "BEGINNER"
       mine_count = Minesweeper::Level.mine_count(dummy_level_name)
       b = Minesweeper::Bomb.place_mines(dummy, mine_count)
-      binding.pry
     end
   end
 end
