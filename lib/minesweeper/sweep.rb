@@ -1,7 +1,7 @@
 module Minesweeper
   class Sweep
     attr_reader :board, :game_over_flag
-    def initialize(board, mine_count, x, y)
+    def initialize(board, mine_count)
       game_over_flag = false
     end
 
