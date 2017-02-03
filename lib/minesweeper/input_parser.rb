@@ -1,7 +1,7 @@
 require 'pry'
 module Minesweeper
   class InputParser
-    attr_reader :board, :rows, :columns
+    attr_reader :board, :rows, :columns, :level
     def initialize(input_hash)
       @board = []
       @columns = input_hash["board_config"].keys.last.to_i + 1
@@ -20,7 +20,8 @@ module Minesweeper
           "2" => [1,1,0,1],
           "3" => [0,1,1,1]
         },
-        "is_solved" => false
+        "is_solved" => false,
+        "level" => "ADVANCED"
       }
     end
   end
