@@ -6,13 +6,15 @@ module Minesweeper
       game_over_flag = false
       @rows = board[0].length
       @columns = board.length
+      @mine_count = mine_count
+      binding.pry
     end
 
     def bounded?(x, y)
       if x < 0 || y < 0 || x > @rows || y > @columns
-        return true
-      end
         return false
+      end
+        return true
     end
 
     def sweep_over(x, y)
@@ -21,7 +23,6 @@ module Minesweeper
       else
         @board = assign_sweep_value
       end
-
     end
 
     def assign_sweep_value(x, y)
@@ -39,13 +40,21 @@ module Minesweeper
         neighbour << @board[move[0]][move[1]] if bounded?(move[0], move[1])
       end
       neighbour.count('x')
+      binding.pry
     end
 
-    def dummy_board
+    def self.dummy_board
       dummy = Array.new(9){ Array.new(9,0) }
       dummy_level_name = "BEGINNER"
       mine_count = Minesweeper::Level.mine_count(dummy_level_name)
-      Minesweeper::Bomb.place_mines(dummy, mine_count)
+      binding.pry
+      return Minesweeper::Bomb.place_mines(dummy, mine_count)
     end
   end
 end
+
+b = Minesweeper::Sweep.new(Minesweeper::Sweep.dummy_board, 5)
+b.assign_sweep_value(1,1)
+
+
+
