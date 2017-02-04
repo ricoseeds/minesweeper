@@ -10,7 +10,7 @@ module Minesweeper
     end
 
     def bounded?(x, y)
-      if x < 0 || y < 0 || x > @rows || y > @columns
+      if x < 0 || y < 0 || x > @rows - 1 || y > @columns - 1
         return false
       end
         return true
@@ -25,11 +25,21 @@ module Minesweeper
     end
 
     def sweep_over(x, y)
-
-      if bounded?(x, y)
-        return
-      else
-        @board = assign_sweep_value
+      if bounded?(x, y) && @board[x][y] == 0
+        current_place_value = assign_sweep_value(x, y)
+        if current_place_value > 0
+          @board[x][y] = current_place_value
+        else
+          @board[x][y] = 'e'
+          sweep_over(x, y - 1)
+          sweep_over(x, y + 1)
+          sweep_over(x - 1, y)
+          sweep_over(x + 1, y)
+          sweep_over(x - 1, y - 1)
+          sweep_over(x + 1, y - 1)
+          sweep_over(x - 1, y + 1)
+          sweep_over(x + 1, y + 1)          
+        end
       end
     end
 
@@ -60,7 +70,7 @@ module Minesweeper
 end
 
 b = Minesweeper::Sweep.new(Minesweeper::Sweep.dummy_board, 5)
-b.assign_sweep_value(1,1)
-
+# b.assign_sweep_value(1,1)
+b.sweep_over(3,4)
 
 
