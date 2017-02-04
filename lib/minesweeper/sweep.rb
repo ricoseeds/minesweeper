@@ -1,8 +1,16 @@
 module Minesweeper
   class Sweep
-    attr_reader :board, :game_over_flag
+    attr_reader :board, :game_over_flag, :rows, :columns
     def initialize(board, mine_count)
       game_over_flag = false
+      @rows = board[0].length
+      @columns = board.length
+    end
+
+    def sweep_over(x, y)
+      if x < 0 || y < 0 || x > @rows || y > @columns
+        return
+      end
     end
 
     def dummy_board
