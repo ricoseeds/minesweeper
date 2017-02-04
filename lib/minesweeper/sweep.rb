@@ -8,23 +8,37 @@ module Minesweeper
       @columns = board.length
     end
 
-    def sweep_over(x, y)
+    def bounded?(x, y)
       if x < 0 || y < 0 || x > @rows || y > @columns
+        return true
+      end
+        return false
+    end
+
+    def sweep_over(x, y)
+      if bounded?(x, y)
         return
       else
         @board = assign_sweep_value
       end
-      UP = [x, y - 1]
-      DOWN = [x, y + 1]
-      LEFT = [x - 1, y]
-      RIGHT = [x + 1, y]
-      TOP_LEFT = [x - 1, y - 1]
-      TOP_RIGHT = [x + 1, y - 1]
-      BOTTOM_LEFT = [x - 1, y + 1]
-      BOTTOM_RIGHT = [x + 1, y + 1]
+
     end
 
-    def assign_sweep_value(x, y)
+    def assign_sweep_value(board, x, y)
+      up = [x, y - 1]
+      down = [x, y + 1]
+      left = [x - 1, y]
+      right = [x + 1, y]
+      top_left = [x - 1, y - 1]
+      top_right = [x + 1, y - 1]
+      bottom_left = [x - 1, y + 1]
+      bottom_right = [x + 1, y + 1]
+      moves = [up, top_right, right, bottom_right, down, bottom_left, left, top_left ]
+      neighbour = []
+      moves.each do |move|
+        neighbour << board[move[0]][move[1]] if bounded?(move[0], move[1])
+      end
+      neighbour.count('x')
     end
 
     def dummy_board
