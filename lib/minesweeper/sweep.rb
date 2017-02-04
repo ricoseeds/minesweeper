@@ -2,6 +2,7 @@ module Minesweeper
   class Sweep
     attr_reader :board, :game_over_flag, :rows, :columns
     def initialize(board, mine_count)
+      @board = board
       game_over_flag = false
       @rows = board[0].length
       @columns = board.length
@@ -10,6 +11,8 @@ module Minesweeper
     def sweep_over(x, y)
       if x < 0 || y < 0 || x > @rows || y > @columns
         return
+      else
+        @board = assign_sweep_value
       end
       UP = [x, y - 1]
       DOWN = [x, y + 1]
@@ -19,6 +22,9 @@ module Minesweeper
       TOP_RIGHT = [x + 1, y - 1]
       BOTTOM_LEFT = [x - 1, y + 1]
       BOTTOM_RIGHT = [x + 1, y + 1]
+    end
+
+    def assign_sweep_value(x, y)
     end
 
     def dummy_board
