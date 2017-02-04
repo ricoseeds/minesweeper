@@ -7,7 +7,6 @@ module Minesweeper
       @rows = board[0].length
       @columns = board.length
       @mine_count = mine_count
-      binding.pry
     end
 
     def bounded?(x, y)
@@ -17,7 +16,16 @@ module Minesweeper
         return true
     end
 
+    def fated?(x, y)
+      if @board[x][y] == 'x'
+        @game_over_flag = true
+        return true
+      end
+      return false
+    end
+
     def sweep_over(x, y)
+
       if bounded?(x, y)
         return
       else
@@ -40,14 +48,12 @@ module Minesweeper
         neighbour << @board[move[0]][move[1]] if bounded?(move[0], move[1])
       end
       neighbour.count('x')
-      binding.pry
     end
 
     def self.dummy_board
       dummy = Array.new(9){ Array.new(9,0) }
       dummy_level_name = "BEGINNER"
       mine_count = Minesweeper::Level.mine_count(dummy_level_name)
-      binding.pry
       return Minesweeper::Bomb.place_mines(dummy, mine_count)
     end
   end
