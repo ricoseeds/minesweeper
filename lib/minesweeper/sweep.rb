@@ -24,7 +24,7 @@ module Minesweeper
 
     end
 
-    def assign_sweep_value(board, x, y)
+    def assign_sweep_value(x, y)
       up = [x, y - 1]
       down = [x, y + 1]
       left = [x - 1, y]
@@ -36,7 +36,7 @@ module Minesweeper
       moves = [up, top_right, right, bottom_right, down, bottom_left, left, top_left ]
       neighbour = []
       moves.each do |move|
-        neighbour << board[move[0]][move[1]] if bounded?(move[0], move[1])
+        neighbour << @board[move[0]][move[1]] if bounded?(move[0], move[1])
       end
       neighbour.count('x')
     end
