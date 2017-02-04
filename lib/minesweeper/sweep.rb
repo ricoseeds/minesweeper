@@ -60,6 +60,15 @@ module Minesweeper
       neighbour.count('x')
     end
 
+    def print_board
+      @board.each do |x|
+        x.each do |y|
+          print y
+        end
+        puts ""
+      end
+    end
+
     def self.dummy_board
       dummy = Array.new(9){ Array.new(9,0) }
       dummy_level_name = "BEGINNER"
