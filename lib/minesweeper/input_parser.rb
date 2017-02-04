@@ -25,4 +25,3 @@ module Minesweeper
     end
   end
 end
-# obj = Minesweeper::InputParser.new(Minesweeper::InputParser.dummy_input)
