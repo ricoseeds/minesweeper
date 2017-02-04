@@ -11,6 +11,14 @@ module Minesweeper
       if x < 0 || y < 0 || x > @rows || y > @columns
         return
       end
+      UP = [x, y - 1]
+      DOWN = [x, y + 1]
+      LEFT = [x - 1, y]
+      RIGHT = [x + 1, y]
+      TOP_LEFT = [x - 1, y - 1]
+      TOP_RIGHT = [x + 1, y - 1]
+      BOTTOM_LEFT = [x - 1, y + 1]
+      BOTTOM_RIGHT = [x + 1, y + 1]
     end
 
     def dummy_board
