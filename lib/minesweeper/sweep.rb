@@ -69,8 +69,8 @@ module Minesweeper
   end
 end
 
-b = Minesweeper::Sweep.new(Minesweeper::Sweep.dummy_board, 5)
-# b.assign_sweep_value(1,1)
-b.sweep_over(3,4)
+# b = Minesweeper::Sweep.new(Minesweeper::Sweep.dummy_board, 10)
+# # b.assign_sweep_value(1,1)
+# b.sweep_over(3,4)
 
 
