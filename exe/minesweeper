@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+minesweeper_lib_path = File.expand_path('../../lib', __FILE__)
+$:.unshift(minesweeper_lib_path)
+
+require 'minesweeper'
+
+Minesweeper::Cli.start(ARGV)

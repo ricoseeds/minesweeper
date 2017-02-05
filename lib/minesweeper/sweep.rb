@@ -70,8 +70,8 @@ module Minesweeper
     end
 
     def self.dummy_board
-      dummy = Array.new(9){ Array.new(9,0) }
-      dummy_level_name = "BEGINNER"
+      dummy = Array.new(16){ Array.new(16,0) }
+      dummy_level_name = "INTERMIDIATE"
       mine_count = Minesweeper::Level.mine_count(dummy_level_name)
       return Minesweeper::Bomb.place_mines(dummy, mine_count)
     end
