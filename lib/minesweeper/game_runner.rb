@@ -5,6 +5,7 @@ module Minesweeper
     def initialize(level)
       @level = level
       @rows, @columns = Minesweeper::Level.dimension(@level)
+      binding.pry
       @user_board = Array.new(@rows){ Array.new(@columns,0) }
       @fate = false
       @board = Minesweeper::Bomb.place_mines(@user_board.clone, Minesweeper::Level.mine_count(level))
@@ -35,7 +36,7 @@ module Minesweeper
     end
 
     def move(x, y)
-      @fate = @board.fated?(x, y)
+      @fate = @sweep.fated?(x, y)
       if !@fate
         @sweep.sweep_over(x, y)
         update_board
@@ -43,7 +44,6 @@ module Minesweeper
       end
       @fate
     end
-
 
     def self.prompt_level
       "1.Beginner\n2.Intermidiate\n3.Advanced"

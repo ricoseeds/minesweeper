@@ -9,9 +9,9 @@ module Minesweeper
     end
 
     def self.dimension(level_name)
-      [9, 9] if level_name == "BEGINNER" || level_name == 1
-      [16, 16] if level_name == "INTERMIDIATE" || level_name == 2
-      [30, 16] if level_name == "ADVANCED" || level_name == 3
+      return [9, 9] if level_name == "BEGINNER" || level_name == 1
+      return [16, 16] if level_name == "INTERMIDIATE" || level_name == 2
+      return [30, 16] if level_name == "ADVANCED" || level_name == 3
     end
   end
 end
