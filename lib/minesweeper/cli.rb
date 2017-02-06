@@ -11,6 +11,7 @@ module Minesweeper
         !!Integer(level)
         system('clear')
         current_game = Minesweeper::GameRunner.new(level)          
+        move = ask("grid coordinates please : ").to_s
         
       rescue ArgumentError
         say("Why Kidding?")

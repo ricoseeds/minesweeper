@@ -24,10 +24,12 @@ module Minesweeper
       puts ""
       for i in 0..@rows - 1 do
         for j in 0..@columns - 1 do
-          if @board[i][j] != "x" 
+          if !@fate && @board[i][j] != 'x' 
             if @user_board[i][j] != @board[i][j] 
               @user_board[i][j] = @board[i][j]
             end
+          elsif @fate && @board[i][j] == 'x'
+            @user_board[i][j] = @board[i][j] if @board[i][j] == 'x'
           end
           print @user_board[i][j]
         end
@@ -40,6 +42,8 @@ module Minesweeper
       if !@fate
         @sweep.sweep_over(x, y)
         update_board
+        diff_display
+      else
         diff_display
       end
       @fate
