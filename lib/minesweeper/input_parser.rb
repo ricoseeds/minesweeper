@@ -1,6 +1,7 @@
 require 'pry'
 module Minesweeper
   class InputParser
+    
     attr_reader :board, :rows, :columns, :level
     def initialize(input_hash)
       @board = []

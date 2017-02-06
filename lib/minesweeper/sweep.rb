@@ -1,5 +1,6 @@
 module Minesweeper
   class Sweep
+    
     attr_reader :board, :game_over_flag, :rows, :columns
     def initialize(board, mine_count)
       @board = board
