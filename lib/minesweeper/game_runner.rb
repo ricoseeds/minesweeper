@@ -7,6 +7,7 @@ module Minesweeper
       @rows, @columns = Minesweeper::Level.dimension(@level)
       @user_board = Array.new(@rows){ Array.new(@columns,0) }
       @fate = false
+      @success = false
       @board = Minesweeper::Bomb.place_mines(@user_board.clone, Minesweeper::Level.mine_count(level))
       play
     end
@@ -35,6 +36,13 @@ module Minesweeper
         end
         puts ""
       end
+    end
+
+    def success?
+      if @user_board.count(0) == 0 && @fate == false
+        return true
+      end
+      return false
     end
 
     def move(x, y)
